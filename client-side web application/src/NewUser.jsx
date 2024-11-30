@@ -1,11 +1,11 @@
 import { useState } from 'react'
 
-function NewUser({ setToggleAddUser, addNewUser }) {
+function NewUser({ setAddUserVisible, addNewUser }) {
     const [newName, setNewName] = useState('')
     const [newEmail, setNewEmail] = useState('')
 
     const cancelNewUser= () => {
-        setToggleAddUser(false)
+        setAddUserVisible(false)
     }
 
     const addUser = () => {

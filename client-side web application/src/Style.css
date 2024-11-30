@@ -1,20 +1,33 @@
+.users-main-container {
+    display: flex;
+    position: relative;
+}
+
+.users-header{
+    margin-bottom: 20px;
+}
+
+.serach-text{
+    margin-right: 40px;
+}
+
 .users-container {
     border: 2px solid gray;
     border-radius: 80px;
     padding: 25px;
-    width: 400px;     
+    width: 400px;
 }
+
 
 .user-container {
     border: 2px solid green;
     margin-bottom: 10px;
-    padding:  2px 10px 2px 10px; /* Top: 2px, Right: 10px, Bottom: 2px, Left: 10px */ 
+    padding: 2px 10px 2px 10px; /* Top: 2px, Right: 10px, Bottom: 2px, Left: 10px */
     text-align: left;
-    font-size: 14px; 
+    font-size: 14px;
     max-width: 400px;
-     
-}
 
+}
 
 .user-container.incomplete {
     border-color: red;
@@ -25,6 +38,39 @@
 }
 
 
+.OtherData-container {
+    border: 1px solid black;
+    border-radius: 30px;
+    padding: 10px;
+    background-color: rgb(238, 237, 237);
+    margin-bottom: 20px;
+
+}
+
+.new-user-container,
+.todos-container,
+.posts-container {
+    border: 2px solid black;
+    margin-bottom: 10px;
+    margin-left: 45px;
+    padding: 15px;
+    max-width: 400px;
+    font-size: 14px;
+    text-align: left;
+}
+
+.todo-container,
+.post-container {
+    border: 2px solid purple;
+    margin-bottom: 10px;
+    padding: 2px 10px 2px 10px;
+    /* Top: 2px, Right: 10px, Bottom: 2px, Left: 10px */
+    font-size: 12px;
+    max-width: 350px;
+    overflow-wrap: break-word;
+    text-align: left;
+}
+
 .user-info-label {
     text-decoration: underline;
     text-decoration-color: blue;
@@ -32,6 +78,22 @@
     margin-right: 10px;
 }
 
+.posts-label,
+.todos-label {
+     margin-right: 200px;  
+     font-size: 15px;
+     margin-left: 0px;
+
+}
+
+.new-user-label,
+.new-post-label,
+.new-todo-label{
+    margin-right: 330px; 
+    font-size: 15px;
+    font-size: 15px;
+    margin-left: 50px;
+}
 
 .user-data {
     border: 1px solid black;
@@ -40,11 +102,11 @@
 }
 
 .button {
-    font-size: 12px; 
-    padding: 5px 10px; 
-    height:25px;
-    min-width: 60px; 
-    border-radius: 2px; 
+    font-size: 12px;
+    padding: 5px 10px;
+    height: 25px;
+    min-width: 60px;
+    border-radius: 2px;
 }
 
 .button.other-data {
@@ -63,41 +125,7 @@
     border: 1px solid black;
 }
 
-
-
-.OtherData-container{
-    border: 1px solid black;
-    border-radius: 30px;
-    padding: 10px;
-    background-color: rgb(238, 237, 237);
-    margin-bottom: 20px;
-
-}
-
-
 .buttons-new-todo {
-    margin-top: 15px;
-    margin-left: 150px;
-}
-
-.todos-container,
-.posts-container {
-    border: 2px solid black;
-    margin-bottom: 10px;
-    margin-left: 45px; 
-    padding: 15px; 
-    max-width: 400px; 
-    font-size: 14px; 
-    text-align: left;
-}
-
-.todo-container,
-.post-container {
-    border: 2px solid purple;
-    margin-bottom: 10px; 
-    padding: 2px 10px 2px 10px; /* Top: 2px, Right: 10px, Bottom: 2px, Left: 10px */ 
-    font-size: 12px; 
-    max-width: 350px;
-    overflow-wrap: break-word; 
-    text-align: left;
+    margin-top: 10px;
+    margin-left: 250px;
 }

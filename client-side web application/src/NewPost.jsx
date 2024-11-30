@@ -1,11 +1,11 @@
 import { useState } from 'react'
 
-function NewPost({ toggleHighlight, setToggleAddPost, addNewPost }) {
+function NewPost({ toggleHighlight, setAddPostVisible, addNewPost }) {
     const [newTitle, setNewTitle] = useState('')
     const [newBody, setNewBody] = useState('')
 
     const cancelNewPost = () => {
-        setToggleAddPost(false)
+        setAddPostVisible(false)
     }
 
     const addPost = () => {
@@ -24,7 +24,7 @@ function NewPost({ toggleHighlight, setToggleAddPost, addNewPost }) {
             <input type="text" onChange={(e) => setNewTitle(e.target.value)} /> <br /> <br />
 
             <span className="user-info-label">Body:</span>
-            <input type="text" onChange={(e) => setNewBody(e.target.value)} /> <br />
+            <input type="text" onChange={(e) => setNewBody(e.target.value)} /> 
 
             <div className="buttons-new-todo">
                 <button className="button cancel" onClick={cancelNewPost}>Cancel</button>

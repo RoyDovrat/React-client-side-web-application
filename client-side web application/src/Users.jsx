@@ -17,34 +17,33 @@ function Users() {
   const [searchTerm, setSearchTerm] = useState('')
   const [filteredUsersData, setFilteredUsersData] = useState([])
   const [toggleHighlight, setToggleHighlight] = useState({ id: '', toggle: false })
-  const [toggleAddUser, setToggleAddUser] = useState(false)
+  const [isAddUserVisible, setAddUserVisible] = useState(false)
 
   const [todos, setTodos] = useState([])
   const [userTodos, setUserTodos] = useState([])
-  const [toggleAddTodo, setToggleAddTodo] = useState(false)
+  const [isAddTodoVisible, setAddTodoVisible] = useState(false)
 
   const [posts, setPosts] = useState([])
   const [userPosts, setUserPosts] = useState([])
-  const [toggleAddPost, setToggleAddPost] = useState(false)
+  const [isAddPostVisible, setAddPostVisible] = useState(false)
 
 
   // Will run once - at the component creation (Mounting)
   useEffect(() => {
     const fetchData = async () => {
       const { data: usersData } = await getAll(USERS_URL);
+      const { data: todoData } = await getAll(TODOS_URL);
+      const { data: postsData } = await getAll(POSTS_URL);
+
       setUsers(usersData);
       setFilteredUsersData(usersData)
-
-      const { data: todoData } = await getAll(TODOS_URL);
       setTodos(todoData);
-
-      const { data: postsData } = await getAll(POSTS_URL);
       setPosts(postsData);
     };
     fetchData();
   }, []);
 
-  // Update filtered users whenever `searchTerm` changes
+  // Update filtered users whenever searchTerm/users changes
   useEffect(() => {
     const filteredUsers = users.filter(
       (user) =>
@@ -55,7 +54,7 @@ function Users() {
   }, [searchTerm, users]);
 
 
-  // Update filtered users whenever `toggleHighlight` changes
+  // Update filtered users whenever toggleHighlight/todos/posts changes
   useEffect(() => {
     if (toggleHighlight.id) {
       const currUserTodos = todos.filter((todo) => todo.userId.toString() === toggleHighlight.id.toString());
@@ -121,14 +120,13 @@ function Users() {
   }
 
   return (
-    <div style={{ display: 'flex', position: 'relative' }}>
+    <div className="users-main-container">
       <div className="users-container">
 
-        <div style={{ marginBottom: '20px' }}>
+        <div className="users-header">
           <label>Search: </label>
-          <input type="text" style={{ marginRight: '30px' }} onChange={(e) => setSearchTerm(e.target.value)} />
-
-          <button className="button add" onClick={() => setToggleAddUser(true)}>Add</button>
+          <input type="text" className="serach-text" onChange={(e) => setSearchTerm(e.target.value)} />
+          <button className="button add" onClick={() => setAddUserVisible(true)}>Add</button>
         </div>
 
         {
@@ -137,16 +135,17 @@ function Users() {
 
       </div>
 
-      {toggleHighlight.toggle && !toggleAddUser &&
+      {/******************** user`s todos list ************************************/}
+      {toggleHighlight.toggle && !isAddUserVisible &&
         <div>
           <div>
 
-            {!toggleAddTodo &&
+            {!isAddTodoVisible &&
               <div>
 
                 <div style={{ marginBottom: '10px' }}>
-                  <label style={{ marginRight: '200px',  fontSize :'15px'}}>Todos-User {toggleHighlight.id}</label>
-                  <button className="button add" onClick={() => setToggleAddTodo(true)}>Add</button>
+                  <label className="todos-label" >Todos-User {toggleHighlight.id}</label>
+                  <button className="button add" onClick={() => setAddTodoVisible(true)}>Add</button>
                 </div>
 
                 <div className="todos-container" >
@@ -158,29 +157,31 @@ function Users() {
               </div>
             }
 
-            {toggleAddTodo &&
+            {isAddTodoVisible &&
               <div>
 
                 <div style={{ marginBottom: '15px' }}>
-                  <label style={{ marginRight: '330px', fontSize :'15px'}}>New Todo-User {toggleHighlight.id}</label>
+                  <label className="new-todo-label" >New Todo-User {toggleHighlight.id}</label>
                 </div>
 
-                {
-                  <NewTodo toggleHighlight={toggleHighlight} setToggleAddTodo={setToggleAddTodo} addNewTodo={addNewTodo} />
-                }
+                <div className="todos-container">
+                  {
+                    <NewTodo toggleHighlight={toggleHighlight} setAddTodoVisible={setAddTodoVisible} addNewTodo={addNewTodo} />
+                  }
+                </div>
+
 
               </div>
             }
           </div>
-
-
           <div>
 
-            {!toggleAddPost &&
+            {/******************** user`s posts list ************************************/}
+            {!isAddPostVisible &&
               <div>
                 <div style={{ marginBottom: '10px' }}>
-                  <label style={{ marginRight: '200px', fontSize :'15px' }}>Posts-User {toggleHighlight.id}</label>
-                  <button className="button add" onClick={() => setToggleAddPost(true)}>Add</button>
+                  <label className="posts-label" >Posts-User {toggleHighlight.id}</label>
+                  <button className="button add" onClick={() => setAddPostVisible(true)}>Add</button>
                 </div>
 
                 <div className="posts-container">
@@ -193,39 +194,40 @@ function Users() {
               </div>
             }
 
-            {toggleAddPost &&
+            {isAddPostVisible &&
               <div>
 
                 <div style={{ marginBottom: '15px' }}>
-                  <label style={{ marginRight: '330px', fontSize :'15px' }}>New Post-User {toggleHighlight.id}</label>
+                  <label className="new-post-label">New Post-User {toggleHighlight.id}</label>
                 </div>
 
-                {
-                  <NewPost toggleHighlight={toggleHighlight} setToggleAddPost={setToggleAddPost} addNewPost={addNewPost} />
-                }
+                <div className="posts-container">
+                  {
+                    <NewPost toggleHighlight={toggleHighlight} setAddPostVisible={setAddPostVisible} addNewPost={addNewPost} />
+                  }
+                </div>
 
               </div>
             }
-
-
           </div>
         </div>
       }
 
-
-      {toggleAddUser &&
-        <div className="users-container">
-          <div style={{ marginBottom: '20px' }}>
-            <label style={{ marginRight: '330px' }}>Add New User</label>
+      {/******************** add new user ************************************/}
+      {isAddUserVisible &&
+        <div style={{ marginLeft: '45px' }}>
+          <div style={{ marginBottom: '10px' }}>
+            <label className="new-user-label">Add New User</label>
           </div>
 
-          {
-            <NewUser setToggleAddUser={setToggleAddUser} addNewUser={addNewUser} />
-          }
+          <div className="new-user-container">
+            {
+              <NewUser setAddUserVisible={setAddUserVisible} addNewUser={addNewUser} />
+            }
+          </div>
 
         </div>
       }
-
 
     </div>
 

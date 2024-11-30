@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { updateItem, deleteItem } from './utils';
 import './Style.css';
 import OtherData from './OtherData';
@@ -37,10 +37,8 @@ function User({ user, onUpdate, onDelete, setToggleHighlight, toggleHighlight, t
 
     return (
         <div
-            className={`user-container ${hasIncompleteTasks() ? 'incomplete' : ''} ${(toggleHighlight.id === user.id && toggleHighlight.toggle) ? 'highlighted' : ''
-                }`}
+            className={`user-container ${hasIncompleteTasks() ? 'incomplete' : ''} ${(toggleHighlight.id === user.id && toggleHighlight.toggle) ? 'highlighted' : '' }`}
         >
-
             <p>
                 <span className="user-info-label" onClick={() =>
                     setToggleHighlight((prev) => ({
@@ -62,6 +60,7 @@ function User({ user, onUpdate, onDelete, setToggleHighlight, toggleHighlight, t
                     className="user-data"
                 />
             </p>
+
             <p>
                 <span className="user-info-label">Email:</span>
                 <input
@@ -71,7 +70,6 @@ function User({ user, onUpdate, onDelete, setToggleHighlight, toggleHighlight, t
                     className="user-data"
                 />
             </p>
-
 
             <div className="buttons-container">
                 <button

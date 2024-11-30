@@ -1,10 +1,10 @@
 import { useState } from 'react'
 
-function NewTodo({ toggleHighlight, setToggleAddTodo, addNewTodo }) {
+function NewTodo({ toggleHighlight, setAddTodoVisible, addNewTodo }) {
     const [newTitle, setNewTitle] = useState('')
 
     const cancelNewTodo = () => {
-        setToggleAddTodo(false)
+        setAddTodoVisible(false)
     }
 
     const addTodo = () => {
@@ -20,7 +20,7 @@ function NewTodo({ toggleHighlight, setToggleAddTodo, addNewTodo }) {
     return (
         <div>
             <span className="user-info-label">Title:</span>
-            <input type="text" onChange={(e) => setNewTitle(e.target.value)} /> <br />
+            <input type="text" onChange={(e) => setNewTitle(e.target.value)} /> 
 
             <div className="buttons-new-todo">
                 <button className="button cancel" onClick={cancelNewTodo}>Cancel</button>

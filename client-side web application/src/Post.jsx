@@ -1,7 +1,5 @@
-import { useState } from 'react'
 
 function Post({ post }) {
-
 
   return (
     <div className="post-container">

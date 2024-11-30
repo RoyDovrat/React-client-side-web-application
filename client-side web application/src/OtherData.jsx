@@ -1,5 +1,4 @@
-import { useState } from 'react'
-// setUpdatedUserData is called with a function. React invokes this function and passes the current state as an argument (prev).
+
 function OtherData({ user, setUpdatedUserData }) {
     return (
         <div className="OtherData-container">

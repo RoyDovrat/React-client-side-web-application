@@ -1,12 +1,9 @@
-import { useState } from 'react'
-
 
 function Todo({ todo, markCompleted }) {
 
     const handleMarkAsCompleted = () => {
         markCompleted(todo.id);
     };
-
 
     return (
         <div className="todo-container">
@@ -24,8 +21,6 @@ function Todo({ todo, markCompleted }) {
                     </button>
                 )}
             </p>
-
-
 
         </div>
     )
