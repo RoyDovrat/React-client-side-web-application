@@ -32,6 +32,7 @@ function User({ user, onUpdate, onDelete, setToggleHighlight, toggleHighlight, t
         const { data } = await deleteItem(USERS_URL, user.id)
         console.log(data)
         onDelete(user.id)
+        setToggleHighlight(false)
     }
 
 

@@ -16,6 +16,8 @@ function NewPost({ toggleHighlight, setAddPostVisible, addNewPost }) {
         };
 
         addNewPost(obj)
+        setNewTitle('');
+        setAddPostVisible(false);
     }
 
     return (
@@ -28,7 +30,7 @@ function NewPost({ toggleHighlight, setAddPostVisible, addNewPost }) {
 
             <div className="buttons-new-todo">
                 <button className="button cancel" onClick={cancelNewPost}>Cancel</button>
-                <button className="button add" onClick={addPost}>Add</button>
+                <button className="button add" onClick={addPost}  disabled={!newTitle.trim()}>Add</button>
             </div>
         </div>
     )

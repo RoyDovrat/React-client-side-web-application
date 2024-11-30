@@ -15,6 +15,8 @@ function NewTodo({ toggleHighlight, setAddTodoVisible, addNewTodo }) {
         };
 
         addNewTodo(obj)
+        setNewTitle(''); // Reset title after adding
+        setAddTodoVisible(false);
     }
 
     return (
@@ -24,7 +26,7 @@ function NewTodo({ toggleHighlight, setAddTodoVisible, addNewTodo }) {
 
             <div className="buttons-new-todo">
                 <button className="button cancel" onClick={cancelNewTodo}>Cancel</button>
-                <button className="button add" onClick={addTodo}>Add</button>
+                <button className="button add" onClick={addTodo} disabled={!newTitle.trim()}>Add</button>
             </div>
         </div>
     )
