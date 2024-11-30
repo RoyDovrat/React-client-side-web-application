@@ -4,7 +4,7 @@ function Post({ post }) {
 
 
   return (
-    <div className="posts-container">
+    <div className="post-container">
       <p>
         <span className="user-info-label">Title:</span>
         {post.title}

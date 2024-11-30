@@ -126,7 +126,7 @@ function Users() {
 
         <div style={{ marginBottom: '20px' }}>
           <label>Search: </label>
-          <input type="text" style={{ marginRight: '150px' }} onChange={(e) => setSearchTerm(e.target.value)} />
+          <input type="text" style={{ marginRight: '30px' }} onChange={(e) => setSearchTerm(e.target.value)} />
 
           <button className="button add" onClick={() => setToggleAddUser(true)}>Add</button>
         </div>
@@ -139,19 +139,21 @@ function Users() {
 
       {toggleHighlight.toggle && !toggleAddUser &&
         <div>
-          <div className="todos-container"  >
+          <div>
 
             {!toggleAddTodo &&
               <div>
 
-                <div style={{ marginBottom: '20px' }}>
-                  <label style={{ marginRight: '330px' }}>Todos-User {toggleHighlight.id}</label>
+                <div style={{ marginBottom: '10px' }}>
+                  <label style={{ marginRight: '200px',  fontSize :'15px'}}>Todos-User {toggleHighlight.id}</label>
                   <button className="button add" onClick={() => setToggleAddTodo(true)}>Add</button>
                 </div>
 
-                {
-                  userTodos.map((todo) => <Todo key={todo.id} todo={todo} markCompleted={handleMarkTodoAsCompleted} />)
-                }
+                <div className="todos-container" >
+                  {
+                    userTodos.map((todo) => <Todo key={todo.id} todo={todo} markCompleted={handleMarkTodoAsCompleted} />)
+                  }
+                </div>
 
               </div>
             }
@@ -159,8 +161,8 @@ function Users() {
             {toggleAddTodo &&
               <div>
 
-                <div style={{ marginBottom: '20px' }}>
-                  <label style={{ marginRight: '330px' }}>New Todo-User {toggleHighlight.id}</label>
+                <div style={{ marginBottom: '15px' }}>
+                  <label style={{ marginRight: '330px', fontSize :'15px'}}>New Todo-User {toggleHighlight.id}</label>
                 </div>
 
                 {
@@ -172,18 +174,21 @@ function Users() {
           </div>
 
 
-          <div className="posts-container" >
+          <div>
 
             {!toggleAddPost &&
               <div>
-                <div style={{ marginBottom: '20px' }}>
-                  <label style={{ marginRight: '330px' }}>Posts-User {toggleHighlight.id}</label>
+                <div style={{ marginBottom: '10px' }}>
+                  <label style={{ marginRight: '200px', fontSize :'15px' }}>Posts-User {toggleHighlight.id}</label>
                   <button className="button add" onClick={() => setToggleAddPost(true)}>Add</button>
                 </div>
 
-                {
-                  userPosts.map((post) => <Post key={post.id} post={post} />)
-                }
+                <div className="posts-container">
+
+                  {
+                    userPosts.map((post) => <Post key={post.id} post={post} />)
+                  }
+                </div>
 
               </div>
             }
@@ -191,8 +196,8 @@ function Users() {
             {toggleAddPost &&
               <div>
 
-                <div style={{ marginBottom: '20px' }}>
-                  <label style={{ marginRight: '330px' }}>New Post-User {toggleHighlight.id}</label>
+                <div style={{ marginBottom: '15px' }}>
+                  <label style={{ marginRight: '330px', fontSize :'15px' }}>New Post-User {toggleHighlight.id}</label>
                 </div>
 
                 {
